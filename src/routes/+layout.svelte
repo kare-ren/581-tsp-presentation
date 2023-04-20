@@ -8,7 +8,7 @@
   import 'virtual:uno.css'
   import { capitalize } from '../utils/string'
 
-  export const pageURLs = ['/', '/001--questions', '/002--brute-force-animation']
+  export const pageURLs = ['/', '/001--questions', '/002--brute-force-animation', '/003--nearest-neighbor-animation']
 
   const getPageIndex = (url: string | null) => {
     if (url === null) return null
@@ -45,6 +45,7 @@
 
   const gotoNextPage = async () => {
     const nextPageURL = getPageURL(pageIndex, 1)
+    //debugger;
     if (nextPageURL !== null) await goto(nextPageURL)
   }
   const gotoPreviousPage = async () => {
