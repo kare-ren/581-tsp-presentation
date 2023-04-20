@@ -39,12 +39,13 @@
   const drawGraph = async () => {
     if (svg === null) throw new Error('svg was not mounted')
     isPlaying = true
+    
+    let visited: boolean[] = new Array(randomCityCoordinates.length).fill(false)
+    let path = new Array(randomCityCoordinates.length)
 
     for (let i = 0; i < randomCityCoordinates.length; ++i) {
       let nearestCityDistance = Infinity
       let nearestCityLine: Line | null = null
-      let visited: boolean[] = new Array(randomCityCoordinates.length).fill(true)
-      let path = new Array(randomCityCoordinates.length)
       for (let j = 0; j < randomCityCoordinates.length; ++j) {
         if (i === j) continue
 
@@ -55,7 +56,7 @@
 
           if (distance >= nearestCityDistance) continue
           nearestCityDistance = distance
-          path[i] = j //
+          path[i] = j 
 
           if (nearestCityLine !== null) nearestCityLine.remove()
 
@@ -73,6 +74,7 @@
       }
       visited[path[i]] = true
     }
+    console.log(path)
     isPlaying = false
   }
 </script>
